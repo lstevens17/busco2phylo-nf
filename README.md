@@ -14,7 +14,7 @@ In the example config file the environment name is `orthology_env`. You can crea
 ## Executing the pipeline on the Sanger farm
 
 Clone this repository:
-``
+```
 git clone https://github.com/lstevens17/busco2phylo-nf.git
 ```
 
