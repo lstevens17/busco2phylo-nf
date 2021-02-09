@@ -11,15 +11,15 @@ process busco2fasta {
 	publishDir "${params.outdir}", mode: 'copy'
 
 	input:
-        	path(busco_dir)
+		path(busco_dir)
 
 	output:
 		path("b2f_output/*.faa"), emit: input_fastas
 
 	script:
-		"""
+	"""
 		busco2fasta.py -b $busco_dir
-		"""
+	"""
 
 }
 
@@ -27,31 +27,31 @@ process align_fastas {
 	publishDir "${params.outdir}/alignments", mode: 'copy'
 	
 	input:
-        	path(input_fastas)
+		path(input_fastas)
 
 	output:
 		path("*.aln"), emit: input_alignments
 
 	script:
-		"""
+	"""
 		cut -f1 -d'.' ${input_fastas} >${input_fastas}.reformatted
 		mafft --auto ${input_fastas}.reformatted > ${input_fastas}.reformatted.aln
-		""
+	"""
 }
 
 process infer_gene_trees {
 	publishDir "${params.outdir}/gene_trees", mode: 'copy'
 
 	input:
-        	path input_alignments
+		path input_alignments
 
 	output:
-        	path("*.treefile"), emit: gene_trees
+		path("*.treefile"), emit: gene_trees
 
-    	script:
-   		"""
-        	iqtree -s $input_alignments -nt ${task.cpus}
-    		"""
+	script:
+		"""
+		iqtree -s $input_alignments -nt ${task.cpus}
+		"""
 }
 
 process run_astral {
@@ -90,7 +90,7 @@ process concatenate_alignments {
 	publishDir "${params.outdir}/supermatrix", mode: 'copy'
 	
 	input:
-        	path trimmed_alignments
+		path trimmed_alignments
 	
 	output:
 		path("supermatrix.fa"), emit: supermatrix
