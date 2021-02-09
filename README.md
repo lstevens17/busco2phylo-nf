@@ -14,7 +14,9 @@ In the example config file the environment name is `orthology_env`. You can crea
 ## Executing the pipeline on the Sanger farm
 
 Clone this repository:
-`git clone https://github.com/lstevens17/busco2phylo-nf.git`
+``
+git clone https://github.com/lstevens17/busco2phylo-nf.git
+```
 
 Submit an interactive job. Choose a queue appropriate to the time of execution of your pipeline. Take into account that the default config submits jobs to the 'normal' queue of 12 hours execution and if the job fails it will be resubmitted into the 'long' queue.
 ```
