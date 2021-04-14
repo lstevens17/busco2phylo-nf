@@ -112,7 +112,7 @@ process infer_supermatrix_tree {
 	
 	script: 
 		"""
-		iqtree -s ${supermatrix} -bb 1000 -nt ${task.cpus}
+		iqtree -s ${supermatrix} -m GTR20+G4 -bb 1000 -nt ${task.cpus}
 		"""
 }
 
@@ -127,7 +127,7 @@ process estimate_astral_BLs {
 	
 	script: 
 		"""
-		iqtree -s ${supermatrix} -nt ${task.cpus} -te ${astral_tree}
+		iqtree -s ${supermatrix} -m GTR20+G4 -nt ${task.cpus} -te ${astral_tree}
 		"""
 }
 
