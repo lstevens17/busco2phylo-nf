@@ -127,7 +127,7 @@ process estimate_astral_BLs {
 	
 	script: 
 		"""
-		iqtree -s ${supermatrix} -m GTR20+G4 -nt ${task.cpus} -te ${astral_tree}
+		iqtree -s ${supermatrix} -m GTR20+G4 -nt ${task.cpus} -te ${astral_tree} ---prefix astral_with_BLs
 		"""
 }
 
